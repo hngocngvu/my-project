@@ -11,8 +11,7 @@ aviation_url= "https://api.aviationstack.com/v1/flights"
 
 def get_data(url, api):
     params= {
-        "api": api,
-        "access_key": aviation_api
+        "access_key": api
     }
     r= requests.get(url, params= params)
     return r.json()
