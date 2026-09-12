@@ -5,6 +5,16 @@ from retry_requests import retry
 
 """
 This script follows open-meteo document
+temperature_2m: Temperature at 2 meters above ground level
+relative_humidity_2m: Relative humidity at 2 meters above ground level
+weather_code: Weather code (e.g., clear, cloudy, rain, snow)
+precipitation: Total precipitation (rain + snow) in millimeters
+wind_speed_10m: Wind speed at 10 meters above ground level
+wind_direction_10m: Wind direction at 10 meters above ground level
+cloud_cover: Cloud cover percentage
+wind_gusts_10m: Wind gusts at 10 meters above ground level- gio giat
+apparent_temperature: Apparent temperature (feels like)
+
 """
 cache_session = requests_cache.CachedSession('.cache', expire_after = -1)
 retry_session = retry(cache_session, retries = 5, backoff_factor = 0.2)
