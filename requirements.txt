@@ -4,3 +4,5 @@ requests-cache
 retry-requests 
 numpy 
 pandas
+sqlalchemy
+pymysql

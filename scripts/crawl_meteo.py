@@ -2,6 +2,7 @@ import json
 import openmeteo_requests
 import requests_cache
 from retry_requests import retry
+import pandas as pd 
 
 """
 This script follows open-meteo document
@@ -55,6 +56,7 @@ if __name__ == "__main__":
     for geo_info in geo_info_list:
         response= get_data(meteo_url, geo_info["lat"], geo_info["lon"])
         hourly = response.Hourly()
+        hourly_time = hourly.Time()
         hourly_temperature_2m = hourly.Variables(0).ValuesAsNumpy().tolist()
         hourly_relative_humidity_2m = hourly.Variables(1).ValuesAsNumpy().tolist()
         hourly_weather_code = hourly.Variables(2).ValuesAsNumpy().tolist()
@@ -66,6 +68,15 @@ if __name__ == "__main__":
         hourly_apparent_temperature = hourly.Variables(8).ValuesAsNumpy().tolist()
 
         hourly_data= dict()
+
+        hourly_data = {
+        "date": pd.date_range(
+            start = pd.to_datetime(hourly.Time(), unit = "s", utc = True),
+            end =  pd.to_datetime(hourly.TimeEnd(), unit = "s", utc = True),
+            freq = pd.Timedelta(seconds = hourly.Interval()),
+            inclusive = "left"
+        ).astype(str).tolist()
+        }
 
         hourly_data["temperature_2m"] = hourly_temperature_2m
         hourly_data["relative_humidity_2m"] = hourly_relative_humidity_2m
