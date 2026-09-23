@@ -4,10 +4,10 @@ processed= list()
 
 
 if __name__ == "__main__":
-    with open("data/flight_data.json", "r") as f:
+    with open("data/json/flight_data.json", "r") as f:
         flight_data= json.load(f)
 
-    with open("data/meteo_data.json", "r") as m:
+    with open("data/json/meteo_data.json", "r") as m:
         meteo_data= json.load(m)
 
     for flight in flight_data["data"]:
@@ -41,7 +41,7 @@ if __name__ == "__main__":
             else:
                 continue
     
-    with open("data/processed.json", "w") as f:
+    with open("data/json/processed.json", "w") as f:
         json.dump(processed, f)
 
 

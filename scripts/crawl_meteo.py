@@ -96,5 +96,5 @@ if __name__ == "__main__":
 
         meteo.append(m.copy())
 
-    with open("data/meteo_data.json", "w") as f:
+    with open("data/json/meteo_data.json", "w") as f:
         json.dump(meteo, f)

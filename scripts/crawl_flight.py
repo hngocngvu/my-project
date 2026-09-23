@@ -18,6 +18,6 @@ def get_data(url, api):
 
 if __name__ == "__main__":
     flight_data= get_data(aviation_url, aviation_api)
-    with open("data/flight_data.json", "w") as f:
+    with open("data/json/flight_data.json", "w") as f:
         json.dump(flight_data, f)
     

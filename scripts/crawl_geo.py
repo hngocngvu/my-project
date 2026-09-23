@@ -32,7 +32,7 @@ if __name__ == "__main__":
         geo= get_data(geo_url + airport, headers)
         geo_data.append(geo["data"])
 
-    with open(f"data/geo_data.json", "w") as f:
+    with open(f"data/json/geo_data.json", "w") as f:
         json.dump(geo_data, f)
         
 
